@@ -9,5 +9,4 @@ manifest:
       revision: main
       path: zmk
 
-  self:
-    path: app
+# self セクションを削除
