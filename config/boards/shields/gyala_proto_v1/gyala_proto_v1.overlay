@@ -1,1 +1,69 @@
 /* gyala_proto_v1 overlay */
+/ {
+    i2c1: i2c@40003000 {
+        compatible = "nordic,nrf-twim";
+        status = "okay";
+        label = "I2C1";
+
+        mcp0: gpio@20 {
+            compatible = "microchip,mcp23018";
+            reg = <0x20>;
+            gpio-controller;
+            #gpio-cells = <2>;
+            label = "MCP0";
+        };
+
+        mcp1: gpio@21 {
+            compatible = "microchip,mcp23018";
+            reg = <0x21>;
+            gpio-controller;
+            #gpio-cells = <2>;
+            label = "MCP1";
+        };
+    };
+
+    kscan0: kscan {
+        compatible = "zmk,kscan-mcp23018";
+        label = "KSCAN0";
+
+        row-gpios = <&mcp0 0 GPIO_ACTIVE_LOW>,
+                    <&mcp0 1 GPIO_ACTIVE_LOW>,
+                    <&mcp0 2 GPIO_ACTIVE_LOW>,
+                    <&mcp0 3 GPIO_ACTIVE_LOW>,
+                    <&mcp0 4 GPIO_ACTIVE_LOW>;
+
+        col-gpios = <&mcp1 0 GPIO_ACTIVE_LOW>,
+                    <&mcp1 1 GPIO_ACTIVE_LOW>,
+                    <&mcp1 2 GPIO_ACTIVE_LOW>,
+                    <&mcp1 3 GPIO_ACTIVE_LOW>,
+                    <&mcp1 4 GPIO_ACTIVE_LOW>,
+                    <&mcp1 5 GPIO_ACTIVE_LOW>,
+                    <&mcp1 6 GPIO_ACTIVE_LOW>,
+                    <&mcp1 7 GPIO_ACTIVE_LOW>,
+                    <&mcp1 8 GPIO_ACTIVE_LOW>,
+                    <&mcp1 9 GPIO_ACTIVE_LOW>;
+    };
+
+    encoder1: encoder {
+        compatible = "zmk,encoder";
+        label = "ENC1";
+        a-gpios = <&gpio0 10 GPIO_ACTIVE_LOW>;
+        b-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
+        button-gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
+    };
+
+    encoder2: encoder {
+        compatible = "zmk,encoder";
+        label = "ENC2";
+        a-gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
+        b-gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
+        button-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
+    };
+
+    led0: led_0 {
+        compatible = "gpio-leds";
+        label = "LED0";
+        gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
+    };
+};
+
