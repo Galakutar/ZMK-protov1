@@ -28,12 +28,6 @@ jobs:
       - name: Remove existing .west workspace
         run: rm -rf .west
 
-      - name: Remove existing zmk directory
-        run: rm -rf zmk
-
-      - name: Manually clone ZMK
-        run: git clone --depth=1 https://github.com/zmkfirmware/zmk.git zmk
-
       - name: Init west workspace using local manifest
         run: west init -l config
 
