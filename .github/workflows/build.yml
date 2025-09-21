@@ -37,10 +37,10 @@ jobs:
       - name: Manually clone ZMK
         run: git clone --depth=1 https://github.com/zmkfirmware/zmk.git zmk
 
-      - name: Configure west manifest path
-        run: west config manifest.path zmk
+      - name: Init west workspace using local manifest
+        run: west init -l zmk
 
-      - name: Initialize west workspace
+      - name: Update west modules
         run: west update
 
       - name: Build firmware
