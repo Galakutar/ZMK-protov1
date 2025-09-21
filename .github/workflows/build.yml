@@ -25,6 +25,9 @@ jobs:
       - name: Clean conflicting app directory
         run: rm -rf app
 
+      - name: Remove existing .west workspace
+        run: rm -rf .west
+
       - name: Init west
         run: west init -l config
 
