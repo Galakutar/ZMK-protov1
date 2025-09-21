@@ -2,25 +2,15 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
       path: zmk
     - name: config
+      remote: self
       path: config
-  self:
-    path: app
-manifest:
-  remotes:
-    - name: zmkfirmware
-      url-base: https://github.com/zmkfirmware
-  projects:
-    - name: zmk
-      remote: zmkfirmware
-      revision: main
-      path: zmk
-    - name: config
-      path: config
+
   self:
     path: app
