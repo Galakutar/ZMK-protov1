@@ -22,16 +22,17 @@ jobs:
             device-tree-compiler libffi-dev git make gcc g++ unzip
           pip3 install west
 
+      - name: Clean conflicting app directory
+        run: rm -rf app
+
       - name: Init west
-        run: |
-          west init -l config
+        run: west init -l config
 
       - name: Remove conflicting west.yml
         run: rm -f zmk/app/west.yml || true
 
       - name: Update west
-        run: |
-          west update
+        run: west update
 
       - name: Build firmware
         run: |
@@ -42,4 +43,3 @@ jobs:
         with:
           name: zmk.uf2
           path: build/zephyr/zmk.uf2
-
