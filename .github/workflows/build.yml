@@ -28,9 +28,6 @@ jobs:
       - name: Remove existing .west workspace
         run: rm -rf .west
 
-      - name: Init west
-        run: west init -m zmk
-
       - name: Remove conflicting west.yml
         run: rm -f zmk/app/west.yml || true
 
@@ -40,7 +37,10 @@ jobs:
       - name: Manually clone ZMK
         run: git clone --depth=1 https://github.com/zmkfirmware/zmk.git zmk
 
-      - name: Update west
+      - name: Configure west manifest path
+        run: west config manifest.path zmk
+
+      - name: Initialize west workspace
         run: west update
 
       - name: Build firmware
