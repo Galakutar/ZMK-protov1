@@ -3,7 +3,7 @@ manifest:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     - name: self
-      url-base: https://github.com/Galakutar
+      url-base: https://github.com/Galakutar/ZMK-protov1
 
   projects:
     - name: zmk
