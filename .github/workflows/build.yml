@@ -27,7 +27,7 @@ jobs:
           west init -l config
 
       - name: Remove conflicting west.yml
-        run: rm -f app/west.yml
+        run: rm -f zmk/app/west.yml || true
 
       - name: Update west
         run: |
