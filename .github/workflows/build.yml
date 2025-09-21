@@ -34,6 +34,9 @@ jobs:
       - name: Remove conflicting west.yml
         run: rm -f zmk/app/west.yml || true
 
+      - name: Remove existing zmk directory
+        run: rm -rf zmk
+
       - name: Manually clone ZMK
         run: git clone --depth=1 https://github.com/zmkfirmware/zmk.git zmk
 
