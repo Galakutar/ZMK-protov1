@@ -32,7 +32,6 @@ jobs:
       - name: Update west
         run: |
           west update
-          west zephyr-export
 
       - name: Build firmware
         run: |
