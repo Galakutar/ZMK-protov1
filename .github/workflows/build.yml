@@ -31,8 +31,14 @@ jobs:
       - name: Remove conflicting west.yml
         run: rm -f zmk/app/west.yml || true
 
+      - name: Manually clone ZMK
+        run: git clone --depth=1 https://github.com/zmkfirmware/zmk.git zmk
+
       - name: Update west
         run: west update
+
+      - name: Check for west-commands.yml
+        run: ls zmk/west-commands.yml
 
       - name: Build firmware
         run: |
